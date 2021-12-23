@@ -38,9 +38,6 @@ jobs:
           
 
       # Runs a set of commands using the runners shell
-      # docker run --ipc=host --cap-add=SYS_PTRACE -it securesystemslab/lind lind /bin/bash -c 'a="regex_test_string"; [[ $a =~ reg.*ng$ ]] && echo "string matched; exec /fork"'
-     # docker run --ipc=host --cap-add=SYS_PTRACE -it securesystemslab/lind lind "make test"
-     # bash -c "docker build --build-arg=BRANCH=${GITHUB_REF##*/} -t securesystemslab/lind ."
       - name: View rust versions
         run: |
           cargo -V
@@ -49,5 +46,8 @@ jobs:
       - name: Build docker and run a test case.
         run: |
           cd ./src/docker/lind-full
-          
+          bash -c "docker build --build-arg=BRANCH=${GITHUB_REF##*/} -t securesystemslab/lind ."
+          echo Done1
+          docker run --ipc=host --cap-add=SYS_PTRACE -it securesystemslab/lind lind /bin/bash -c 'a="regex_test_string"; [[ $a =~ reg.*ng$ ]] && echo "string matched; exec /fork"'
+          docker run --ipc=host --cap-add=SYS_PTRACE -it securesystemslab/lind lind "make test"
          
