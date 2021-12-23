@@ -30,9 +30,10 @@ jobs:
         run: echo Hello, world!
 
       # Runs a set of commands using the runners shell
+      # docker run --ipc=host --cap-add=SYS_PTRACE -it securesystemslab/lind lind /bin/bash -c 'a="regex_test_string"; [[ $a =~ reg.*ng$ ]] && echo "string matched; exec /fork"'
+     # docker run --ipc=host --cap-add=SYS_PTRACE -it securesystemslab/lind lind "make test"
       - name: Build docker and run a test case.
         run: |
           cd ./src/docker/lind-full
           bash -c "docker build --build-arg=BRANCH=${GITHUB_REF##*/} -t securesystemslab/lind . >/dev/null 2>&1"
-          docker run --ipc=host --cap-add=SYS_PTRACE -it securesystemslab/lind lind /bin/bash -c 'a="regex_test_string"; [[ $a =~ reg.*ng$ ]] && echo "string matched; exec /fork"'
-          docker run --ipc=host --cap-add=SYS_PTRACE -it securesystemslab/lind lind "make test"
+         
