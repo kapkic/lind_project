@@ -46,7 +46,7 @@ jobs:
       - name: Build docker and run a test case.
         run: |
           cd ./src/docker/lind-full
-          bash -c "docker build --build-arg=BRANCH=develop -t securesystemslab/lind ."
+          bash -c "docker build --build-arg=BRANCH=github-actions -t securesystemslab/lind ."
           echo Done1
           docker run --ipc=host --cap-add=SYS_PTRACE -it securesystemslab/lind lind /bin/bash -c 'a="regex_test_string"; [[ $a =~ reg.*ng$ ]] && echo "string matched; exec /fork"'
           docker run --ipc=host --cap-add=SYS_PTRACE -it securesystemslab/lind lind "make test"
