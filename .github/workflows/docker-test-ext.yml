@@ -27,7 +27,7 @@ jobs:
       # Runs a set of commands using the runners shell
       - name: Test
         run: | 
-          cd ../..
+          cd /home/lind/lind_project/
           pwd
           echo ls-out
           ls -a
