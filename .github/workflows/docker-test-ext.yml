@@ -25,6 +25,13 @@ jobs:
 
     steps:
       # Runs a set of commands using the runners shell
+      - name: File-init
+        run: | 
+          cd ~
+          tree -d
+          pwd
+          echo Tree-done.
+      
       - name: Test
         run: | 
           cd /home/lind/lind_project/
