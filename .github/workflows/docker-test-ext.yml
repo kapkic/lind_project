@@ -25,36 +25,20 @@ jobs:
 
     steps:
       # Runs a set of commands using the runners shell
-      - name: File-init
-        run: | 
-          tree -d
-          cd ~
-          tree -d
-          pwd
-          echo Tree-done.
-      
+     
       - name: Test
         run: | 
           cd /home/lind/lind_project/
-          tree -d
-          echo tree2
-          pwd
-          echo ls-out
-          ls -a
-          echo lindfsls-out
-          lindfs ls .
           
       - name: Test2
         run: | 
          git --git-dir /home/lind/lind_project/src/lind_glibc/.git remote update origin --prune;
          git --git-dir /home/lind/lind_project/src/native_client/.git remote update origin --prune;
          git --git-dir /home/lind/lind_project/src/safeposix-rust/.git remote update origin --prune;
-         git --git-dir /home/lind/lind_project/.git remote update origin --prune;
          echo Repos updated
          git --git-dir /home/lind/lind_project/src/lind_glibc/.git checkout remotes/origin/develop;
          git --git-dir /home/lind/lind_project/src/native_client/.git checkout remotes/origin/develop;
          git --git-dir /home/lind/lind_project/src/safeposix-rust/.git checkout remotes/origin/develop;
-         git --git-dir /home/lind/lind_project/.git checkout --force remotes/origin/develop;
          echo Develop checked out
           
       - name: Make-installs
