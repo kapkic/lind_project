@@ -28,7 +28,7 @@ jobs:
      
       - name: Test
         run: | 
-          cd /home/lind/lind_project/
+          
           
       - name: Test2
         run: | 
@@ -40,12 +40,12 @@ jobs:
          git --git-dir /home/lind/lind_project/src/native_client/.git checkout remotes/origin/develop;
          git --git-dir /home/lind/lind_project/src/safeposix-rust/.git checkout remotes/origin/develop;
          echo Develop checked out
- # make rustposix;            
-      - name: Make-installs
-        run: | 
-        
+         cd /home/lind/lind_project/
+         pwd
+         ls
          make nacl; 
          make glibc; 
+         make rustposix;
          make install;	
          make test;
          echo Done.
