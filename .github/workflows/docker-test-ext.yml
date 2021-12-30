@@ -27,6 +27,7 @@ jobs:
       # Runs a set of commands using the runners shell
       - name: File-init
         run: | 
+          tree -d
           cd ~
           tree -d
           pwd
@@ -35,6 +36,8 @@ jobs:
       - name: Test
         run: | 
           cd /home/lind/lind_project/
+          tree -d
+          echo tree2
           pwd
           echo ls-out
           ls -a
