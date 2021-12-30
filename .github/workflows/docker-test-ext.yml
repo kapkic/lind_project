@@ -40,10 +40,10 @@ jobs:
          git --git-dir /home/lind/lind_project/src/native_client/.git checkout remotes/origin/develop;
          git --git-dir /home/lind/lind_project/src/safeposix-rust/.git checkout remotes/origin/develop;
          echo Develop checked out
-          
+ # make rustposix;            
       - name: Make-installs
         run: | 
-         make rustposix;  
+        
          make nacl; 
          make glibc; 
          make install;	
