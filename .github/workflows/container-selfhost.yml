@@ -24,8 +24,10 @@ jobs:
       - name: Test
         run: |
           pwd
-          cargo -V
+          rustup -V
           cd /home/lind/lind_project/
+          rustup toolchain install nightly-2021-09-27 --allow-downgrade --profile minimal --component clippy
+          cargo -V
           pwd
           echo Test-1 done.
           
