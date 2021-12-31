@@ -40,5 +40,5 @@ make glibc;
 echo "One ring to INSTALL them all"
 make install;
 echo "And in darkness TEST them"
-make test;
+make test-verbose;
 #echo "It's alive!"
