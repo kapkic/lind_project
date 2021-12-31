@@ -12,7 +12,7 @@ rustup -V #rust toolchain is not installed?
 echo "Cargo:"
 cargo -V
 
-rustup toolchain install nightly --allow-downgrade --profile minimal --component clippy
+rustup toolchain install nightly-2021-09-27 --allow-downgrade --profile minimal --component clippy
 
 echo "Toolchain:"
 rustup toolchain list
@@ -32,9 +32,9 @@ make rustposix;
 echo "One NACL to rule them all:"
 make nacl; 
 echo "One GLIBC to find them:"
-make glibc; 
+#make glibc; 
 echo "One ring to INSTALL them all"
-make install;
+#make install;
 echo "And in darkness TEST them"
-make test;
+#make test;
 #echo "It's alive!"
