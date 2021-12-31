@@ -22,14 +22,19 @@ echo "Cargo:"
 cargo -V
 
 #disabled for rustposix testing:
-#git --git-dir /home/lind/lind_project/src/lind_glibc/.git checkout remotes/origin/develop;
-#git --git-dir /home/lind/lind_project/src/native_client/.git checkout remotes/origin/develop;
-#git --git-dir /home/lind/lind_project/src/safeposix-rust/.git checkout remotes/origin/develop;
-#git --git-dir /home/lind/lind_project/.git checkout remotes/origin/develop;
+git --git-dir /home/lind/lind_project/src/lind_glibc/.git checkout remotes/origin/develop;
+git --git-dir /home/lind/lind_project/src/native_client/.git checkout remotes/origin/develop;
+git --git-dir /home/lind/lind_project/src/safeposix-rust/.git checkout remotes/origin/develop;
+git --git-dir /home/lind/lind_project/.git checkout remotes/origin/develop;
 
-#make rustposix;  
-#make nacl; 
-#make glibc; 
-#make install;
-#make test;
+echo "In the land of RUSTPOSIX where the shadows lie:"
+make rustposix;  
+echo "One NACL to rule them all:"
+make nacl; 
+echo "One GLIBC to find them:"
+make glibc; 
+echo "One ring to INSTALL them all"
+make install;
+echo "And in darkness TEST them"
+make test;
 #echo "It's alive!"
