@@ -2,7 +2,7 @@
 FROM securesystemslab/lind
 
 # Copies your code file from your action repository to the filesystem path `/` of the container
-COPY entrypoint.sh /home/lind/lind-project/entrypoint.sh
+COPY entrypoint.sh /entrypoint.sh
 
 # Code file to execute when the docker container starts up (`entrypoint.sh`)
-ENTRYPOINT ["/home/lind/lind-project/entrypoint.sh"]
+ENTRYPOINT ["/entrypoint.sh"]
