@@ -16,7 +16,11 @@ jobs:
   build:
     # The type of runner that the job will run on
     runs-on: self-hosted
-    container: securesystemslab/lind
+    container: 
+      image: securesystemslab/lind
+      options: --privileged --ipc=host --cap-add=SYS_PTRACE
+    
+    #  options: --privileged --ipc=host --cap-add=SYS_PTRACE
 
     steps:
       # Runs a set of commands using the runners shell
