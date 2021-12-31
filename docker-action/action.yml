@@ -9,6 +9,11 @@ inputs:
 outputs:
   time: # id of output
     description: 'The time we greeted you'
+      - uses: actions-rs/toolchain@v1
+        with:
+            toolchain: nightly
+            override: true
+            components: rustfmt, clippy
 runs:
   using: 'docker'
   image: 'Dockerfile'
