@@ -28,10 +28,7 @@ cd /home/lind/lind_project/
 ls
 pwd
 
-lindfs cp /home/lind/lind_project/helloY.nexe /lind/helloY.nexe
-lind -vvvv /lind/helloY.nexe
-echo "blank"
-lind -vvvv /lind/helloINVALID.nexe
+
 
 
 #disabled for rustposix testing:
@@ -50,4 +47,10 @@ echo "One ring to INSTALL them all"
 make install;
 echo "And in darkness TEST them"
 #make test-verbose;
-#echo "It's alive!"
+echo "It's alive?"
+
+pwd
+lindfs cp /home/lind/lind_project/helloY.nexe /lind/helloY.nexe
+lind -vvvv /lind/helloY.nexe
+echo "blank"
+lind -vvvv /lind/helloINVALID.nexe
