@@ -23,5 +23,5 @@ jobs:
     - name: Run a multi-line script
       run: |
         cargo -V
-        docker run --privileged --ipc=host --cap-add=SYS_PTRACE -it securesystemslab/lind /bin/bash
+        docker run --privileged --ipc=host --cap-add=SYS_PTRACE -i securesystemslab/lind /bin/bash
         cargo -V
