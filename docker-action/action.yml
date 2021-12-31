@@ -1,11 +1,6 @@
 # action.yml
 name: 'Hello World'
 description: 'Greet someone and record the time'
-- uses: actions-rs/toolchain@v1
-  with:
-    toolchain: nightly
-    override: true
-    components: rustfmt, clippy
 inputs:
   who-to-greet:  # id of input
     description: 'Who to greet'
@@ -17,5 +12,10 @@ outputs:
 runs:
   using: 'docker'
   image: 'Dockerfile'
+  - uses: actions-rs/toolchain@v1
+    with:
+    toolchain: nightly
+    override: true
+    components: rustfmt, clippy
   args:
     - ${{ inputs.who-to-greet }}
