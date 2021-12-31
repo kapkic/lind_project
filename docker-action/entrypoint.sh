@@ -28,7 +28,7 @@ ls
 pwd
 
 lindfs cp /home/lind/lind_project/helloX.nexe /lind/helloX.nexe
-lind -vvvv /lind/helloX.nexe
+lind -vvvv /lind/helloINVALID.nexe
 
 
 #disabled for rustposix testing:
