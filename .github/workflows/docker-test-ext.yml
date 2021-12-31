@@ -27,11 +27,19 @@ jobs:
       # Runs a set of commands using the runners shell
      
       - name: Test
-        run: | 
-          
+        run: |
+          pwd
+          cargo -V
+          cd /home/lind/lind_project/
+          pwd
+          echo Test-1 done.
           
       - name: Test2
         run: | 
+         Test-2 begin.
+         pwd
+         cd /home/lind/lind_project/
+         lindfs ls .
          git --git-dir /home/lind/lind_project/src/lind_glibc/.git remote update origin --prune;
          git --git-dir /home/lind/lind_project/src/native_client/.git remote update origin --prune;
          git --git-dir /home/lind/lind_project/src/safeposix-rust/.git remote update origin --prune;
@@ -40,14 +48,11 @@ jobs:
          git --git-dir /home/lind/lind_project/src/native_client/.git checkout remotes/origin/develop;
          git --git-dir /home/lind/lind_project/src/safeposix-rust/.git checkout remotes/origin/develop;
          echo Develop checked out
-         cd /home/lind/lind_project/
-         pwd
-         ls
          make nacl; 
          make glibc; 
          make rustposix;
          make install;	
-         make test;
+         make test-verbose;
          echo Done.
 #        bash -c "docker build --build-arg=BRANCH=github-actions -t securesystemslab/lind ."
 #         docker run --ipc=host --cap-add=SYS_PTRACE -it securesystemslab/lind lind /bin/bash -c 'a="regex_test_string"; [[ $a =~ reg.*ng$ ]] && echo "string matched; exec /fork"'
