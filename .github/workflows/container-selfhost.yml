@@ -33,9 +33,10 @@ jobs:
           
       - name: Test2
         run: | 
-         Test-2 begin.
+         echo Test-2 begin.
          pwd
          cd /home/lind/lind_project/
+         cargo -V
          lindfs ls .
          git --git-dir /home/lind/lind_project/src/lind_glibc/.git remote update origin --prune;
          git --git-dir /home/lind/lind_project/src/native_client/.git remote update origin --prune;
