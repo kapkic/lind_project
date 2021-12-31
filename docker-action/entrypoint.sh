@@ -20,7 +20,11 @@ echo "Rustup:"
 rustup -V #rust toolchain is not installed?
 echo "Cargo:"
 cargo -V
-
+ls
+pwd
+cd /home/lind/lind_project/
+ls
+pwd
 #disabled for rustposix testing:
 git --git-dir /home/lind/lind_project/src/lind_glibc/.git checkout remotes/origin/develop;
 git --git-dir /home/lind/lind_project/src/native_client/.git checkout remotes/origin/develop;
