@@ -54,9 +54,8 @@ jobs:
          make nacl; 
          make glibc; 
          make rustposix;
-         make install;	
-         lindfs cp /home/lind/lind_project/helloY.nexe /lind/helloY.nexe
-         lind -vvvv /lind/helloY.nexe
+         make install;
+         make test-verbose;
          
 #         make test-verbose;
 #         echo Done.
