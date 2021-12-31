@@ -12,13 +12,22 @@ rustup -V #rust toolchain is not installed?
 echo "Cargo:"
 cargo -V
 
+rustup toolchain install nightly --allow-downgrade --profile minimal --component clippy
+
+echo "Toolchain:"
+rustup toolchain list
+echo "Rustup:"
+rustup -V #rust toolchain is not installed?
+echo "Cargo:"
+cargo -V
+
 #disabled for rustposix testing:
 #git --git-dir /home/lind/lind_project/src/lind_glibc/.git checkout remotes/origin/develop;
 #git --git-dir /home/lind/lind_project/src/native_client/.git checkout remotes/origin/develop;
 #git --git-dir /home/lind/lind_project/src/safeposix-rust/.git checkout remotes/origin/develop;
 #git --git-dir /home/lind/lind_project/.git checkout remotes/origin/develop;
 
-make rustposix;  
+#make rustposix;  
 #make nacl; 
 #make glibc; 
 #make install;
