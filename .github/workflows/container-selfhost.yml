@@ -25,18 +25,19 @@ jobs:
         run: |
           pwd
           rustup -V
+          cp helloY.nexe /home/lind/lind_project/helloY.nexe
           cd /home/lind/lind_project/
           rustup toolchain install nightly-2021-09-27 --allow-downgrade --profile minimal --component clippy
-          cargo -V
-          pwd
+          ls
           echo Test-1 done.
+          
+      - name: Checkout lind-project
+        run: |
+          git --git-dir /home/lind/lind_project/.git remote update origin --prune;
+          git --git-dir /home/lind/lind_project/.git checkout remotes/origin/develop;
           
       - name: Test2
         run: | 
-         echo Test-2 begin.
-         pwd
-         cd /home/lind/lind_project/
-         cargo -V
          lindfs ls .
          git --git-dir /home/lind/lind_project/src/lind_glibc/.git remote update origin --prune;
          git --git-dir /home/lind/lind_project/src/native_client/.git remote update origin --prune;
@@ -50,8 +51,11 @@ jobs:
          make glibc; 
          make rustposix;
          make install;	
-         make test-verbose;
-         echo Done.
+         lindfs cp /home/lind/lind_project/helloY.nexe /lind/helloY.nexe
+         lind -vvvv /lind/helloY.nexe
+         
+#         make test-verbose;
+#         echo Done.
 #        bash -c "docker build --build-arg=BRANCH=github-actions -t securesystemslab/lind ."
 #         docker run --ipc=host --cap-add=SYS_PTRACE -it securesystemslab/lind lind /bin/bash -c 'a="regex_test_string"; [[ $a =~ reg.*ng$ ]] && echo "string matched; exec /fork"'
 #         docker run --ipc=host --cap-add=SYS_PTRACE -it securesystemslab/lind lind "make test"
