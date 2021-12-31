@@ -5,10 +5,12 @@ git --git-dir /home/lind/lind_project/src/native_client/.git remote update origi
 git --git-dir /home/lind/lind_project/src/safeposix-rust/.git remote update origin --prune;
 git --git-dir /home/lind/lind_project/.git remote update origin --prune;
 
+echo "Toolchain:"
 rustup toolchain list
+echo "Rustup:"
 rustup -V #rust toolchain is not installed?
-echo "lindfs output:"
-lindfs ls .
+echo "Cargo:"
+cargo -V
 
 #disabled for rustposix testing:
 #git --git-dir /home/lind/lind_project/src/lind_glibc/.git checkout remotes/origin/develop;
