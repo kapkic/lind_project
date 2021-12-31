@@ -6,7 +6,9 @@ git --git-dir /home/lind/lind_project/src/safeposix-rust/.git remote update orig
 git --git-dir /home/lind/lind_project/.git remote update origin --prune;
 
 rustup toolchain list
-rustup -V
+rustup -V #rust toolchain is not installed?
+echo "lindfs output:"
+lindfs ls .
 
 #disabled for rustposix testing:
 #git --git-dir /home/lind/lind_project/src/lind_glibc/.git checkout remotes/origin/develop;
