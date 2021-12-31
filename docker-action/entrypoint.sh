@@ -23,7 +23,7 @@ rustup toolchain install nightly-2021-09-27 --allow-downgrade --profile minimal 
 #ls
 #pwd
 
-cp helloX.nexe /home/lind/lind_project/helloX.nexe
+cp helloY.nexe /home/lind/lind_project/helloY.nexe
 cd /home/lind/lind_project/
 ls
 pwd
@@ -50,6 +50,7 @@ echo "And in darkness TEST them"
 echo "It's alive?"
 
 pwd
+ls
 lindfs cp /home/lind/lind_project/helloY.nexe /lind/helloY.nexe
 lind -vvvv /lind/helloY.nexe
 echo "blank"
