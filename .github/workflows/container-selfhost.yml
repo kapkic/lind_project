@@ -38,7 +38,7 @@ jobs:
       - name: Checkout lind-project
         run: |
           git --git-dir /home/lind/lind_project/.git remote update origin --prune;
-          git --git-dir /home/lind/lind_project/.git checkout remotes/origin/develop;
+          git --git-dir /home/lind/lind_project/.git checkout --force remotes/origin/develop;
           
       - name: Test2
         run: | 
