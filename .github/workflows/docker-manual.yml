@@ -24,4 +24,5 @@ jobs:
       run: |
         cargo -V
         docker run --privileged --ipc=host --cap-add=SYS_PTRACE -i securesystemslab/lind /bin/bash
-        cargo -V
+        ls
+        lindfs ls .
