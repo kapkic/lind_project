@@ -36,9 +36,9 @@ make rustposix;
 echo "One NACL to rule them all:"
 make nacl; 
 echo "One GLIBC to find them:"
-#make glibc; 
+make glibc; 
 echo "One ring to INSTALL them all"
-#make install;
+make install;
 echo "And in darkness TEST them"
-#make test;
+make test;
 #echo "It's alive!"
