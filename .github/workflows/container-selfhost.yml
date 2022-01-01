@@ -29,37 +29,37 @@ jobs:
         run: |
           pwd
           rustup -V
-          cp helloY.nexe /home/lind/lind_project/helloY.nexe
+          cargo -V
           cd /home/lind/lind_project/
           rustup toolchain install nightly-2021-09-27 --allow-downgrade --profile minimal --component clippy
-          ls
-          echo Test-1 done.
           
       - name: Checkout lind-project
         run: |
           git --git-dir /home/lind/lind_project/.git remote update origin --prune;
           git --git-dir /home/lind/lind_project/.git checkout --force remotes/origin/develop;
           
-      - name: Test2
+      - name: In the land of RUSTPOSIX where the shadows lie
         run: | 
-         lindfs ls .
-         git --git-dir /home/lind/lind_project/src/lind_glibc/.git remote update origin --prune;
-         git --git-dir /home/lind/lind_project/src/native_client/.git remote update origin --prune;
          git --git-dir /home/lind/lind_project/src/safeposix-rust/.git remote update origin --prune;
-         echo Repos updated
-         git --git-dir /home/lind/lind_project/src/lind_glibc/.git checkout remotes/origin/develop;
-         git --git-dir /home/lind/lind_project/src/native_client/.git checkout remotes/origin/develop;
          git --git-dir /home/lind/lind_project/src/safeposix-rust/.git checkout remotes/origin/develop;
-         echo Develop checked out
-         make nacl; 
-         make glibc; 
          make rustposix;
-         make install;
-         make test-verbose;
-         
-#         make test-verbose;
-#         echo Done.
-#        bash -c "docker build --build-arg=BRANCH=github-actions -t securesystemslab/lind ."
-#         docker run --ipc=host --cap-add=SYS_PTRACE -it securesystemslab/lind lind /bin/bash -c 'a="regex_test_string"; [[ $a =~ reg.*ng$ ]] && echo "string matched; exec /fork"'
-#         docker run --ipc=host --cap-add=SYS_PTRACE -it securesystemslab/lind lind "make test"
-     
+       
+      - name: One NACL to rule them all
+        run: | 
+         git --git-dir /home/lind/lind_project/src/native_client/.git remote update origin --prune;
+         git --git-dir /home/lind/lind_project/src/native_client/.git checkout remotes/origin/develop;
+         make nacl; 
+
+      - name: One GLIBC to find them
+        run: | 
+         git --git-dir /home/lind/lind_project/src/lind_glibc/.git remote update origin --prune;
+         git --git-dir /home/lind/lind_project/src/lind_glibc/.git checkout remotes/origin/develop;
+         make glibc; 
+
+      - name: One ring to INSTALL them all
+        run: | 
+          make install;
+
+      - name: And in darkness TEST them
+        run: | 
+          make test-verbose;
