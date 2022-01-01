@@ -25,11 +25,8 @@ jobs:
     steps:
       # Runs a set of commands using the runners shell
      
-      - name: Test
+      - name: Install Rust
         run: |
-          pwd
-          rustup -V
-          cargo -V
           cd /home/lind/lind_project/
           rustup toolchain install nightly-2021-09-27 --allow-downgrade --profile minimal --component clippy
           
