@@ -9,10 +9,10 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Echo out branch values
-          run: | 
-            echo github.base_ref: ${{ github.base_ref }}
-            echo github.head_ref: ${{ github.head_ref }}
-            echo github.ref: ${{ github.ref }}
+        run: | 
+          echo github.base_ref: ${{ github.base_ref }}
+          echo github.head_ref: ${{ github.head_ref }}
+          echo github.ref: ${{ github.ref }}
       - name: List files in the repository
         run: |
           ls ${{ github.workspace }}
