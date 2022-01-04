@@ -19,9 +19,9 @@ jobs:
   build:
     # The type of runner that the job will run on
     runs-on: ubuntu-latest
-    container: 
-      image: securesystemslab/lind
-      options: --privileged --ipc=host --cap-add=SYS_PTRACE
+#    container: 
+#      image: securesystemslab/lind
+#      options: --privileged --ipc=host --cap-add=SYS_PTRACE
     
     #  options: --privileged --ipc=host --cap-add=SYS_PTRACE
 
