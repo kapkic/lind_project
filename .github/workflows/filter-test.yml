@@ -36,5 +36,5 @@ jobs:
       - name: Do stuff
         run: |
           echo "Kinda limited POWER"
-          if: (${{ github.event.pull_request.user.login }} == 'kapkic')
+          if: ${{ github.event.pull_request.user.login == 'kapkic' }}
           echo "UNLIMITED POWER"
