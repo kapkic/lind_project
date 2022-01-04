@@ -34,8 +34,11 @@ jobs:
           echo github.user.login: ${{ github.event.pull_request.user.login }}
           
       - name: Do stuff
+        if: ${{ github.event.pull_request.user.login == 'kapkic' }}
+        run: |
+          echo "UNLIMITED POWER"
+      
+      - name: Do stuff
+        if: ${{ github.event.pull_request.user.login != 'kapkic' }}
         run: |
           echo "Kinda limited POWER"
-          if: true
-          echo "UNLIMITED POWER"
-#${{ github.event.pull_request.user.login == 'kapkic' }}
