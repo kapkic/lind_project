@@ -27,25 +27,19 @@ jobs:
 
     steps:
       # Runs a set of commands using the runners shell
-      - name: Install latest nightly
-        uses: actions-rs/toolchain@v1
-        with:
-            toolchain: nightly
-            override: true
-            components: rustfmt, clippy
-     
+    
       - name: Echo out branch values
         run: | 
           echo github.base_ref: ${{ github.base_ref }}
           echo github.head_ref: ${{ github.head_ref }}
           echo github.ref: ${{ github.ref }}
           
-      - name: Rust test
+      - name: Install Rust
         run: |
+          cd /home/lind/lind_project/
+          rustup toolchain install nightly --allow-downgrade --profile minimal --component clippy
           rustup -V
           cargo -V
-#          cd /home/lind/lind_project/
-#          rustup toolchain install nightly --allow-downgrade --profile minimal --component clippy
                     
       - name: Checkout lind-project
         run: |
