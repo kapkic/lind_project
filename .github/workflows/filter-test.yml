@@ -41,4 +41,4 @@ jobs:
       - name: Do stuff
         if: ${{ github.event.pull_request.user.login != 'kapkic' }}
         run: |
-          echo "Kinda limited POWER"
+          echo "You are not 'kapkic', Kinda limited POWER"
