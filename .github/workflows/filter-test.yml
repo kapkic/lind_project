@@ -1,13 +1,14 @@
-# This is a basic workflow to help you get started with Actions
-
-name: Filter Testing
+name: Filter Test
 
 # Controls when the workflow will run
 on:
+# Triggers the workflow on pull request events but only for the develop branch
   pull_request:
     branches:
       - develop
-  # Triggers the workflow on push or pull request events but only for the master branch
+#echo github.base_ref: ${{ github.base_ref }} - develop, where the base is
+#echo github.head_ref: ${{ github.head_ref }} - PR branch, which we want to merge on develop
+  
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
 
@@ -18,10 +19,10 @@ jobs:
   # This workflow contains a single job called "build"
   build:
     # The type of runner that the job will run on
-    runs-on: ubuntu-latest
-#    container: 
-#      image: securesystemslab/lind
-#      options: --privileged --ipc=host --cap-add=SYS_PTRACE
+    runs-on: self-hosted
+    container: 
+      image: securesystemslab/lind
+      options: --privileged --ipc=host --cap-add=SYS_PTRACE
     
     #  options: --privileged --ipc=host --cap-add=SYS_PTRACE
 
@@ -40,4 +41,3 @@ jobs:
           echo "Kinda limited POWER"
           if: (${{ github.event.pull_request.user.login }} == 'kapkic')
           echo "UNLIMITED POWER"
-                    
