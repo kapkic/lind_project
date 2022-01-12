@@ -36,6 +36,8 @@ jobs:
           
       - name: Install Rust
         run: |
+          whoami
+          pwd
           cd /home/lind/lind_project/
           rustup toolchain install nightly --allow-downgrade --profile minimal --component clippy
           rustup -V
