@@ -25,13 +25,13 @@ jobs:
           echo github.ref: ${{ github.ref }}
 
       - name: Checkout lind-project with PR branch
-        if: ${{ github.head_ref }} != ""
+        if: github.head_ref!= ''
         run: |
           echo wow
       
 
       - name: Checkout lind-project with PR branch
-        if: ${{ github.head_ref }} == ""
+        if: github.head_ref == ''
         run: |
           echo naw
           
