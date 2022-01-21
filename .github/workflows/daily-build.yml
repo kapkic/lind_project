@@ -3,7 +3,7 @@ name: Daily-Nightly Build
 # Controls when the workflow will run
 on:
   schedule:
-    - cron: '02 1 * * *'
+    - cron: '18 1 * * *'
   # Triggers the workflow on push or pull request events but only for the develop branch
   # Allows you to run this workflow manually from the Actions tab
 jobs:
