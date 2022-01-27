@@ -1,4 +1,4 @@
-name: Daily-Nightly Build
+name: Daily-Nightly BuildRemoteBranch
 
 # Controls when the workflow will run
 on:
