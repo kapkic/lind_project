@@ -10,6 +10,8 @@ on:
     branches:
       - develop
       - main
+  schedule:
+   - cron: '* * * * *'
 #echo github.base_ref: ${{ github.base_ref }} - develop, where the base is
 #echo github.head_ref: ${{ github.head_ref }} - PR branch, which we want to merge on develop
   
