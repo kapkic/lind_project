@@ -28,7 +28,7 @@ jobs:
     runs-on: ubuntu-latest
     
     #  options: --privileged --ipc=host --cap-add=SYS_PTRACE
-
+    if: github.event.pull_request.draft == false
     steps:
       # Runs a set of commands using the runners shell
     
