@@ -1,48 +1,43 @@
-# This is a basic workflow to help you get started with Actions
-
-name: Self-Host Testing but inside lind container
+name: Lind Project Build
 
 # Controls when the workflow will run
 on:
+  push:
+    branches:
+      - develop
+      - main
   pull_request:
     branches:
       - develop
-  # Triggers the workflow on push or pull request events but only for the master branch
+      - main
+  # Triggers the workflow on push or pull request events but only for the develop branch
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
 
-## We don't need to even download files, we only need the docker container.
-
-# A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
-  # This workflow contains a single job called "build"
   build:
-    # The type of runner that the job will run on
     runs-on: self-hosted
-    #  options: --privileged --ipc=host --cap-add=SYS_PTRACE
-
+    if: github.event.pull_request.draft == false
     steps:
-      # Runs a set of commands using the runners shell
-    
       - name: Echo out branch values
         run: | 
           echo github.base_ref: ${{ github.base_ref }}
           echo github.head_ref: ${{ github.head_ref }}
           echo github.ref: ${{ github.ref }}
-          
-      - name: Install Rust
-        run: |
-          whoami
-          pwd
           cd /home/lind/lind_project/
-          rustup -V
-          cargo -V
-                    
-      - name: Checkout lind-project
+
+      - name: Checkout lind-project with PR branch
+        if: github.head_ref != ''
         run: |
           git --git-dir /home/lind/lind_project/.git remote update origin --prune;
-          git --git-dir /home/lind/lind_project/.git checkout --force remotes/origin/more-test-cases;
-          
+          git --git-dir /home/lind/lind_project/.git checkout --force remotes/origin/${{ github.head_ref }};
+
+      - name: Checkout lind-project with default branch (develop)
+        if: github.head_ref == ''
+        run: |
+          git --git-dir /home/lind/lind_project/.git remote update origin --prune;
+          git --git-dir /home/lind/lind_project/.git checkout --force remotes/origin/develop;
+
       - name: In the land of RUSTPOSIX where the shadows lie
         run: | 
          git --git-dir /home/lind/lind_project/src/safeposix-rust/.git remote update origin --prune;
@@ -59,12 +54,22 @@ jobs:
         run: | 
          git --git-dir /home/lind/lind_project/src/lind_glibc/.git remote update origin --prune;
          git --git-dir /home/lind/lind_project/src/lind_glibc/.git checkout remotes/origin/develop;
-         make glibc; 
+         make glibc;
 
       - name: One ring to INSTALL them all
         run: | 
           make install;
-
+  
+  test:
+    runs-on: self-hosted
+    steps:
       - name: And in darkness TEST them
         run: | 
           make test-verbose;
+  
+  coreutils-test:
+    runs-on: self-hosted
+    steps:
+      - name: In the land of COREUTILS where the scripts lie
+        run: | 
+          make coreutils-test-verbose;
